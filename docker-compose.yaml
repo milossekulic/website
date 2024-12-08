@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  milos-sekulic-website:
+    image: nginx:latest
+    container_name: milos-sekulic-website
+#    ports:
+#      - "80:80"
+    networks:
+      - cloudflare-tunnel
+    volumes:
+      - ./website:/usr/share/nginx/html
+    restart: unless-stopped
+
+networks:
+  cloudflare-tunnel:
+    external: true
